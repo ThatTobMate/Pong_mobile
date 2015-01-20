@@ -6,11 +6,23 @@ canvas{
   background-repeat: none;
 }
 
+#left_move{
+  display: none;
+}
+
+#right_move{
+  display: none;
+}
+
+#phone_menu{
+  display: none;
+}
+
 
 #start{
   position: absolute;
   top: 500;
-  left: 170;
+  left: 925;
   margin: 0 auto;
   text-align: center;
   font-size: 30px;
@@ -78,4 +90,91 @@ body{
 
 a {
   color: #00B7FF;
+}
+
+@media screen and (max-width: 736px) {
+  #canvas{
+    margin-left: -23.5px;
+    width: 110%;
+    height: 100%;
+  }
+  #main{
+    text-align: center;
+
+    width: 100%;
+    background-color: rgba(246, 250, 248, 0.0);
+    height: 20px;
+    display: inline-block;
+    vertical-align: top;
+    border:none;
+    font-family: 'Lobster Two', cursive;
+    position: absolute;
+    left: -80px;
+    top: 90px;
+  }
+  #main h1{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+  }
+  #main h3{
+    font-size: 15px;
+    margin-top: 70px;
+  }
+
+  #notice{
+    display: none;
+  }
+
+  #rally_score{
+    position: absolute;
+    left: 150;
+    top: 320;
+    text-align: center;
+    color: white;
+  }
+
+  #main span{
+    font-size: 15px;
+    color: white;
+  }
+
+
+  #left_move{
+    width: 43%;
+    height: 47px;
+    background: black;
+    display: inline-block;
+    position: absolute;
+    left: 2;
+    color: white;
+    bottom: 0;
+    text-align: center;
+  }
+  #start{
+    position: absolute;
+    left: 155;
+    top: 556;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    width: 15%;
+    height: 43px;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    box-shadow:none;
+  }
+  #right_move{
+    text-align: center;
+    width: 43%;
+    height: 47px;
+    background: black;
+    color: white;
+    display: inline-block;
+    position: absolute;
+    left: 210;
+    bottom: 0;
+  }
+
 }

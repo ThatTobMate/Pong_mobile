@@ -6,10 +6,13 @@
 	<link rel="stylesheet" href="stylesheets/style.css">
 	<script src="javascripts/jquery-1.11.2.min.js"></script>
 	<script src="javascripts/script.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div id="container">
 		<canvas id="canvas" width="600" height="600"></canvas>
+		<div id="left_move" class="notSelectable">LEFT</div>
+		<div id="right_move" class="notSelectable">RIGHT</div>
 		<main id="main">
 			<h1>Pong</h1>
 			<h2 id="notice"></h2>
@@ -17,8 +20,8 @@
 			<h3>Computer Score: <span id="computer">0</span></h3>
 			<h3>Your Score: <span id="user">0</span></h3>
 			<h2 id="rally"></h2>
-			<div id="start">Play</div>
 		</main>
+		<div id="start">Play</div>
 	</div>	
 </body>
 </html>

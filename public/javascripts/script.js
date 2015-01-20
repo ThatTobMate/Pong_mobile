@@ -1,7 +1,12 @@
 $(function(){
   canvas = document.getElementById('canvas');
 
-$('#start').on('click', init)
+// $('#start').on('click', init)
+
+$('#start').on('click', function(){
+  document.getElementById('start').style.pointerEvents = 'none'; 
+  init()
+})
 
 $(document).keydown(function(){
   if(event.keyCode == 39){
@@ -19,6 +24,22 @@ $(document).keyup(function(){
   }
 })
 
+$('#left_move').bind('touchend', function(){
+        leftDown = false;
+        // nodoubletapzoom()
+    });
+
+$('#right_move').bind('touchend', function(){
+        rightDown = false;
+    });
+
+$('body').disableSelection();
+
+$('body').nodoubletapzoom();
+
+$('#left_move').nodoubletapzoom();
+
+$('#right_move').nodoubletapzoom();
   user = 0
   computer = 0
   rally = 0
@@ -129,6 +150,7 @@ $(document).keyup(function(){
         //while the alert popup is open, the code is frozen, so the line below alert will only run when the popup is closed.
         
         user ++
+        document.getElementById('start').style.pointerEvents = 'auto';
         $('#notice').text("Great shot!");
         $('#user').text(user);
         $('#start').text("Serve");
@@ -153,6 +175,7 @@ $(document).keyup(function(){
       }else{
         clearInterval(drawInterval);
         computer ++
+        document.getElementById('start').style.pointerEvents = 'auto';
         $('#notice').text("Bad luck!");
         $('#computer').text(computer);
         $('#start').text("Serve");
@@ -163,3 +186,45 @@ $(document).keyup(function(){
     y += dy;
   }
 });
+
+
+
+$.fn.extend({
+    disableSelection: function() {
+        this.each(function() {
+            this.onselectstart = function() {
+                return false;
+            };
+            this.unselectable = "on";
+            $(this).css('-moz-user-select', 'none');
+            $(this).css('-webkit-user-select', 'none');
+        });
+    }
+});
+
+
+
+  $.fn.nodoubletapzoom = function() {
+    // console.log(IS_IOS)
+    // if (IS_IOS)
+      $(this).bind('touchstart', function preventZoom(e) {
+        if($(this).html() == "LEFT"){
+          leftDown = true;
+        }else if($(this).html() == "RIGHT"){
+          rightDown = true;
+        }else{
+          null
+        }
+        var t2 = e.timeStamp
+          , t1 = $(this).data('lastTouch') || t2
+          , dt = t2 - t1
+          , fingers = e.originalEvent.touches.length;
+        $(this).data('lastTouch', t2);
+        if (!dt || dt > 500 || fingers > 1) return; // not double-tap
+
+        e.preventDefault(); // double tap - prevent the zoom
+        // also synthesize click events we just swallowed up
+        $(this).trigger('click').trigger('click');
+      });
+  };
+
