@@ -1,0 +1,81 @@
+canvas{
+  border:3px solid white; 
+  background-image: url('../images/court.jpg'); 
+  background-size: cover;
+  background-position: center center; 
+  background-repeat: none;
+}
+
+
+#start{
+  position: absolute;
+  top: 450;
+  left: 170;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 30px;
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: 5px solid black;
+  box-shadow:1px 6px 5px #02010A;
+}
+
+
+#container{
+  height: 90%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+body{
+  background-image: url('../images/tennis.jpg');
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 98%;
+  font-family: 'Lobster Two', cursive;
+  /*padding: 50px;*/
+}
+
+#main{
+  text-align: center;
+  margin-left: 80px;
+  width: 450px;
+  background-color: rgba(246, 250, 248, 0.4);
+  height: 600px;
+  display: inline-block;
+  vertical-align: top;
+  border:3px solid white;
+  font-family: 'Lobster Two', cursive;
+  position: absolute;
+}
+
+#main h1{
+  text-align: center;
+  color: white;
+  font-size: 80px;
+}
+#main h3{
+  font-size: 30px;
+}
+
+#notice{
+  text-align: center;
+}
+
+#rally_score{
+  text-align: center;
+  color: white;
+}
+
+#main span{
+  font-size: 25px;
+  color: white;
+}
+
+
+a {
+  color: #00B7FF;
+}
