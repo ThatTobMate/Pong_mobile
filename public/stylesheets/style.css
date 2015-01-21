@@ -92,9 +92,11 @@ a {
   color: #00B7FF;
 }
 
+/*iPhone6*/
 @media screen and (max-width: 736px) {
   #canvas{
     margin-left: -23.5px;
+    margin-top: 20px;
     width: 110%;
     height: 100%;
   }
@@ -141,39 +143,30 @@ a {
 
 
   #left_move{
-    width: 43%;
-    height: 47px;
-    background: black;
+    width: 30%;
+    height: 100%;
     display: inline-block;
     position: absolute;
-    left: 2;
-    color: white;
+    left: 0;
+    background: rgba(246, 250, 248, 0.0);
+    color: rgba(246, 250, 248, 0.0);
+    border: none;
     bottom: 0;
     text-align: center;
   }
   #start{
-    position: absolute;
-    left: 155;
-    top: 556;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 20px;
-    width: 15%;
-    height: 43px;
-    background-color: white;
-    color: black;
-    border: 3px solid black;
-    box-shadow:none;
+  display: none;
   }
   #right_move{
     text-align: center;
-    width: 43%;
-    height: 47px;
-    background: black;
-    color: white;
+    width: 30%;
+    height: 100%;
+    background: rgba(246, 250, 248, 0.0);
+    color: rgba(246, 250, 248, 0.0);
+    border: none;
     display: inline-block;
     position: absolute;
-    left: 210;
+    left: 255;
     bottom: 0;
   }
 

@@ -1,13 +1,19 @@
 $(function(){
   canvas = document.getElementById('canvas');
 
-// $('#start').on('click', init)
+$('#canvas').on('touchstart', function(){
+  document.getElementById('canvas').style.pointerEvents = 'none'; 
+  init()
+})
 
+//Start the game and turn off the start button so it can't be presse multiple times.
 $('#start').on('click', function(){
   document.getElementById('start').style.pointerEvents = 'none'; 
   init()
 })
 
+
+//Event listeners if the user is playing on a computer then it will set the leftDown or rightDown variable depending on the arrow key pressed.
 $(document).keydown(function(){
   if(event.keyCode == 39){
     rightDown = true;
@@ -24,26 +30,36 @@ $(document).keyup(function(){
   }
 })
 
+
+//For mobile: when the user takes their finger off the element set the variable as false to indicate no movement. 
 $('#left_move').bind('touchend', function(){
         leftDown = false;
-        // nodoubletapzoom()
     });
 
 $('#right_move').bind('touchend', function(){
         rightDown = false;
     });
 
+
+//On iPhone when I hold down my finger n the screen it copys or selects elements, this function prevents that.
 $('body').disableSelection();
 
+
+//Sometimes when playing the user taps the buttons in quick succession, this is an attempt to prevent the screen zooming in when they do this.
 $('body').nodoubletapzoom();
 
 $('#left_move').nodoubletapzoom();
 
 $('#right_move').nodoubletapzoom();
+
+
+//Set the score variables.
   user = 0
   computer = 0
   rally = 0
 
+
+//Create the canvas objects and variables and start the game
   function init(){
     $('#rally_score').text("");
     $('#notice').text("Let's go!");
@@ -62,6 +78,7 @@ $('#right_move').nodoubletapzoom();
     rally = 0
   }
 
+//Drawing the tennis ball
   function circle(x, y, r){
     ctx.beginPath();
     ctx.arc(x, y, r, 0, (Math.PI *2));
@@ -70,6 +87,7 @@ $('#right_move').nodoubletapzoom();
     ctx.fill();
   }
 
+//Drawing the paddles
   function rect(x, y, w, h){
     ctx.beginPath();
     ctx.rect(x, y, w, h)
@@ -82,6 +100,7 @@ $('#right_move').nodoubletapzoom();
     ctx.clearRect(0, 0, WIDTH, HEIGHT)
   }
 
+//Function to get the computer paddle to track the balls movement and try to hit it.
   function followBallAI(){
     var delayReaction = Math.random();
     if(delayReaction >= 0.25){
@@ -111,6 +130,7 @@ $('#right_move').nodoubletapzoom();
     }
   }
 
+//Drawing the ball and paddles and set points of impact and determine who the winner is.
   function draw(){
     clear();
     circle(x, y, radius);
@@ -150,6 +170,7 @@ $('#right_move').nodoubletapzoom();
         //while the alert popup is open, the code is frozen, so the line below alert will only run when the popup is closed.
         
         user ++
+        document.getElementById('canvas').style.pointerEvents = 'auto';
         document.getElementById('start').style.pointerEvents = 'auto';
         $('#notice').text("Great shot!");
         $('#user').text(user);
@@ -175,6 +196,7 @@ $('#right_move').nodoubletapzoom();
       }else{
         clearInterval(drawInterval);
         computer ++
+        document.getElementById('canvas').style.pointerEvents = 'auto';
         document.getElementById('start').style.pointerEvents = 'auto';
         $('#notice').text("Bad luck!");
         $('#computer').text(computer);
@@ -188,7 +210,7 @@ $('#right_move').nodoubletapzoom();
 });
 
 
-
+//Functions that are called on html elements at the top.
 $.fn.extend({
     disableSelection: function() {
         this.each(function() {
@@ -205,8 +227,6 @@ $.fn.extend({
 
 
   $.fn.nodoubletapzoom = function() {
-    // console.log(IS_IOS)
-    // if (IS_IOS)
       $(this).bind('touchstart', function preventZoom(e) {
         if($(this).html() == "LEFT"){
           leftDown = true;
