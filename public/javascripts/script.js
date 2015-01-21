@@ -41,11 +41,12 @@ $('#right_move').bind('touchend', function(){
     });
 
 
-//On iPhone when I hold down my finger n the screen it copys or selects elements, this function prevents that.
+//On iPhone when I hold down my finger on the screen it copys or selects elements, this function prevents that.
 $('body').disableSelection();
 
 
 //Sometimes when playing the user taps the buttons in quick succession, this is an attempt to prevent the screen zooming in when they do this.
+//Works for the most part but sometimes still zooms?
 $('body').nodoubletapzoom();
 
 $('#left_move').nodoubletapzoom();
@@ -240,7 +241,7 @@ $.fn.extend({
           , dt = t2 - t1
           , fingers = e.originalEvent.touches.length;
         $(this).data('lastTouch', t2);
-        if (!dt || dt > 500 || fingers > 1) return; // not double-tap
+        if (!dt || dt > 800 || fingers > 1) return; // not double-tap
 
         e.preventDefault(); // double tap - prevent the zoom
         // also synthesize click events we just swallowed up
